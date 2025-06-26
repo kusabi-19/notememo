@@ -48,8 +48,12 @@ button{
 .app-sidebar-note small{
   color: #999;
 }
+.app-sidebar-note.active{
+  background-color: #c7a8a8;
+}
 
 .app-sidebar-note:hover{
   background-color: #bb8f8f;
 
 }
+
