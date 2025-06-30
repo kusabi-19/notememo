@@ -18,10 +18,27 @@ function App() {
     console.log(notes);
   };
 
+  const getActiveNote = () => {
+    return notes.find( (note) => note.id === activeNode)
+  }
+
   const onDeleateNote = (id) => {
     const filterNotes = notes.filter( (note) => note.id !== id);
     setNotes(filterNotes)
   }
+
+  const onUpdateNote = (updatedNote) => {
+    const updatedNotesArray = notes.map((note) => {
+      if(note.id === updatedNote.id) {
+        return updatedNote;
+      } else {
+        return note ; 
+      }
+    });
+
+    setNotes(updatedNotesArray);
+  };
+
   return (
     <div className='App'>
       <Sidebar
@@ -31,7 +48,7 @@ function App() {
           activeNode={activeNode}
           setActiveNode={setActiveNode}
        />
-      <Main />
+      <Main activeNode={getActiveNote()} onUpdateNote={onUpdateNote}/>
     </div>
 
   )
