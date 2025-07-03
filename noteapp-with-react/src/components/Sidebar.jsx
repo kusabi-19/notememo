@@ -1,7 +1,17 @@
 import React from 'react'
 import "./Sidebar.css"
 
-const Sidebar = ({onAddNote , notes , onDeleateNote , activeNode, setActiveNode}) => {
+const Sidebar = ({
+  onAddNote , 
+  notes , 
+  onDeleateNote , 
+  activeNode, 
+  setActiveNode
+}) => {
+
+const sortedNotes = notes.sort((a , b) => b.modDate - a.modDate);
+
+
   return (
     <div className='app-sidebar'>
       <div className='app-sidebar-header'>
@@ -9,7 +19,7 @@ const Sidebar = ({onAddNote , notes , onDeleateNote , activeNode, setActiveNode}
         <button onClick={onAddNote}>追加</button>
       </div>
       <div className='app-sidebar-notes'>
-        {notes.map((note) => (
+        {sortedNotes.map((note) => (
           <div className={`app-sidebar-note ${note.id === activeNode && `active`}`} key={note.id} onClick={() => setActiveNode(note.id)}>
             <div className='sidebar-note-title'>
               <strong>{note.title}</strong>

@@ -1,5 +1,6 @@
 import React from 'react'
 import "./Main.css"
+import ReactMarkdown from 'react-markdown';
 
 const Main = ({activeNode , onUpdateNote}) => {
   const onEditNote = (key , value) => {
@@ -37,8 +38,10 @@ const Main = ({activeNode , onUpdateNote}) => {
         {activeNode ? (
           <>
             <h1 className='preview-title'>{activeNode.title}</h1>
-            <div className='markdown-preview'>{activeNode.content}</div>
-          </>
+            <div className="markdown-preview">
+              <ReactMarkdown>{activeNode.content}</ReactMarkdown>
+            </div>          
+            </>
         ) : (
           <div className='no-active-note'>ノートが選択されていません</div>
         )}
